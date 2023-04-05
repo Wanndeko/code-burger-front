@@ -6,7 +6,7 @@ import PropTypes from 'prop-types'
 import { Header } from '../components'
 
 function PrivateRoute({ component: Component, ...rest }) {
-  const user = localStorage.getItem('codeburguer:userData')
+  const user = JSON.parse(localStorage.getItem('codeburguer:userData'))
 
   if (!user) {
     return <Navigate to="/login" />

@@ -55,7 +55,7 @@ export function Login() {
     )
 
     putUserData(data)
-
+    console.log(data)
     setTimeout(() => {
       if (data.admin) {
         navigate('/pedidos')

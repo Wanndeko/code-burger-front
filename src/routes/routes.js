@@ -11,13 +11,13 @@ function MultRoutes() {
         <Route path="/register" element={<Register />} />
         <Route exact path="/" element={<PrivateRoute component={Home} />} />
         <Route
-          path="/products"
+          path="/produtos"
           element={<PrivateRoute component={Products} />}
         />
-        <Route path="/cart" element={<PrivateRoute component={Cart} />} />
+        <Route path="/carrinho" element={<PrivateRoute component={Cart} />} />
 
         <Route
-          path="/admin"
+          path="/pedidos"
           element={<PrivateRoute component={Admin} isAdmin />}
         />
         <Route
