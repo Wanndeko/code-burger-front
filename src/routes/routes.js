@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 import { Home, Login, Products, Register, Cart, Admin } from '../Containers/'
 import PrivateRoute from './private-route'
+
 function MultRoutes() {
   return (
     <Router>
@@ -17,7 +18,7 @@ function MultRoutes() {
         <Route path="/carrinho" element={<PrivateRoute component={Cart} />} />
 
         <Route
-          path="/pedidos"
+          path="/admin"
           element={<PrivateRoute component={Admin} isAdmin />}
         />
         <Route

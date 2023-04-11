@@ -58,7 +58,7 @@ export function Login() {
     console.log(data)
     setTimeout(() => {
       if (data.admin) {
-        navigate('/pedidos')
+        navigate('/admin')
       } else {
         navigate('/')
       }
