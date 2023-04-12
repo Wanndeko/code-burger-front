@@ -48,7 +48,7 @@ function ListProducts() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {products.length > 0 &&
+            {products &&
               products.map(product => (
                 <TableRow
                   key={product.id}

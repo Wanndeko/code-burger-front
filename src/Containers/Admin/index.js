@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom'
 
 import { SideMenuAdmin } from '../../components'
 import ListProducts from './ListProducts'
+import NewProduct from './NewProduct'
 import Orders from './Orders'
 import { Container, ContainerItems } from './styles'
 export function Admin() {
@@ -15,6 +16,8 @@ export function Admin() {
       return <Orders />
     } else if (location.pathname === '/admin/products') {
       return <ListProducts />
+    } else if (location.pathname === '/admin/new-product') {
+      return <NewProduct />
     }
   }
   return (
