@@ -55,3 +55,14 @@ export const ButtonStyled = styled(Button)`
   margin-top: 50px;
   min-height: 36.13px;
 `
+
+export const ContainerInput = styled.div`
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  input {
+    width: 15px;
+    height: 15px;
+    cursor: pointer;
+  }
+`

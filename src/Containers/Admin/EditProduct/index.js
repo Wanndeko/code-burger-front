@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useForm, Controller } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import ReactSelect from 'react-select'
 import { toast } from 'react-toastify'
 
@@ -10,25 +10,25 @@ import * as Yup from 'yup'
 
 import { ErrorMessage } from '../../../components'
 import api from '../../../services/api'
-import { Container, Label, LabelUpuload, Input, ButtonStyled } from './styles'
-function NewProduct() {
+import {
+  Container,
+  Label,
+  LabelUpuload,
+  Input,
+  ButtonStyled,
+  ContainerInput
+} from './styles'
+
+function EditProduct() {
+  const navigate = useNavigate()
+  const { state } = useLocation()
   const [categories, setCategories] = useState([])
   const [fileName, setFileName] = useState(null)
-  const navigate = useNavigate()
+
   const schema = Yup.object().shape({
     name: Yup.string().required('Digite o nome do produto'),
     price: Yup.string().required('Digite o preço do produto'),
-    category: Yup.object().required('Escolha uma categoria'),
-    file: Yup.mixed()
-      .test('required', 'cade a imagem amigo ?', value => {
-        return value?.length > 0
-      })
-      .test('fileSize', 'carregue arquivo até 2mb', value => {
-        return value[0]?.size <= 200000
-      })
-      .test('type', 'carregue apenas arquivos jpeg/png', value => {
-        return value[0]?.type === 'image/jpeg' || value[0]?.type === 'image/png'
-      })
+    category: Yup.object().required('Escolha uma categoria')
   })
 
   const {
@@ -45,12 +45,14 @@ function NewProduct() {
     productDataFormData.append('price', data.price)
     productDataFormData.append('category_id', data.category.id)
     productDataFormData.append('file', data.file[0])
+    productDataFormData.append('offer', data.offer)
 
-    await toast.promise(api.post('products', productDataFormData), {
-      pending: 'Criando novo produto',
-      success: 'Produto criado com sucesso',
-      error: 'Falha ao criar produto'
+    await toast.promise(api.put(`products/${state.id}`, productDataFormData), {
+      pending: 'Editando novo produto',
+      success: 'Produto editado com sucesso',
+      error: 'Falha ao editar produto'
     })
+
     setTimeout(() => {
       navigate('/admin/products')
     }, 2000)
@@ -69,12 +71,16 @@ function NewProduct() {
       <form noValidate onSubmit={handleSubmit(onSubmit)}>
         <div>
           <Label>Nome</Label>
-          <Input type="text" {...register('name')} />
+          <Input type="text" {...register('name')} defaultValue={state.name} />
           <ErrorMessage>{errors.name?.message}</ErrorMessage>
         </div>
         <div>
           <Label>Preço</Label>
-          <Input type="number" {...register('price')} />
+          <Input
+            type="number"
+            {...register('price')}
+            defaultValue={state.price}
+          />
           <ErrorMessage>{errors.price?.message}</ErrorMessage>
         </div>
         <div>
@@ -100,6 +106,7 @@ function NewProduct() {
           <Controller
             name="category"
             control={control}
+            defaultValue={state.category}
             render={({ field }) => {
               return (
                 <ReactSelect
@@ -108,6 +115,7 @@ function NewProduct() {
                   getOptionLabel={cat => cat.name}
                   getOptionValue={cat => cat.id}
                   placeholder="Categorias"
+                  defaultValue={state.category}
                 />
               )
             }}
@@ -115,10 +123,20 @@ function NewProduct() {
 
           <ErrorMessage>{errors.category?.message}</ErrorMessage>
         </div>
-        <ButtonStyled>Adicionar Produto</ButtonStyled>
+        <ContainerInput>
+          {' '}
+          <input
+            type="checkbox"
+            {...register('offer')}
+            defaultChecked={state.offer}
+          />
+          <Label>Produto em oferta ?</Label>
+        </ContainerInput>
+
+        <ButtonStyled>Editar Produto</ButtonStyled>
       </form>
     </Container>
   )
 }
 
-export default NewProduct
+export default EditProduct

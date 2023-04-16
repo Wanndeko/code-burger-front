@@ -4,7 +4,9 @@ import styled from 'styled-components'
 export const Container = styled.div``
 
 export const Img = styled.img`
-  width: 70px;
+  max-height: 70px;
+  min-height: 70px;
+  max-width: 70px;
   border-radius: 5px;
 `
 

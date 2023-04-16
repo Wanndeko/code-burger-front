@@ -78,12 +78,3 @@ export const Input = styled.input`
   border-radius: 5px;
   border: ${props => (props.error ? 'solid 2px #CC1717' : ' none')};
 `
-
-export const ErrorMessage = styled.p`
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 16px;
-  margin-top: 2px;
-  color: #cc1717;
-`

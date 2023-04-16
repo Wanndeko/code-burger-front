@@ -18,7 +18,7 @@ const listLinks = [
   },
   {
     id: 3,
-    label: 'New-Produtos',
+    label: 'Novo produto',
     link: paths.newProduct,
     icon: AddShoppingCartIcon
   }

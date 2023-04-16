@@ -8,7 +8,7 @@ import * as yup from 'yup'
 
 import LogoImage from '../../assets/logoLogin.svg'
 import RegisterImg from '../../assets/regiterImg.svg'
-import { Button } from '../../components/'
+import { Button, ErrorMessage } from '../../components/'
 import api from '../../services/api'
 import {
   Container,
@@ -16,8 +16,7 @@ import {
   ContainerItens,
   SignInLogin,
   Label,
-  Input,
-  ErrorMessage
+  Input
 } from './styles'
 export function Register() {
   const schema = yup.object().shape({

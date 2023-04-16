@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import CancelIcon from '@mui/icons-material/Cancel'
 import CheckBoxIcon from '@mui/icons-material/CheckBox'
@@ -15,6 +16,8 @@ import formatCurrency from '../../../utils/formatCurrency'
 import { Container, Img, EditButton } from './styles'
 
 function ListProducts() {
+  const navigate = useNavigate()
+
   const [products, setProducts] = useState()
 
   useEffect(() => {
@@ -33,7 +36,9 @@ function ListProducts() {
     }
     return <CancelIcon style={{ color: '#cc1717' }} />
   }
-
+  function editProduct(product) {
+    navigate('/admin/edit-product', { state: product })
+  }
   return (
     <Container>
       <TableContainer component={Paper}>
@@ -63,7 +68,7 @@ function ListProducts() {
                     <Img src={product.url} alt="imagem-do-produto" />
                   </TableCell>
                   <TableCell>
-                    <EditButton />
+                    <EditButton onClick={() => editProduct(product)} />
                   </TableCell>
                 </TableRow>
               ))}

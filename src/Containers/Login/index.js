@@ -8,7 +8,7 @@ import * as yup from 'yup'
 
 import LoginImg from '../../assets/loginImg.svg'
 import LogoImage from '../../assets/logoLogin.svg'
-import { Button } from '../../components/'
+import { Button, ErrorMessage } from '../../components/'
 import { useUser } from '../../hooks/UserContext'
 import api from '../../services/api'
 import {
@@ -17,8 +17,7 @@ import {
   ContainerItens,
   SignInLogin,
   Label,
-  Input,
-  ErrorMessage
+  Input
 } from './styles'
 
 export function Login() {
