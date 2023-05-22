@@ -14,4 +14,10 @@ export const Wrapper = styled.div`
   justify-content: space-evenly;
   margin-top: 30px;
   padding-bottom: 30px;
+
+  @media (max-width: 1050px) {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
 `

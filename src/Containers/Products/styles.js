@@ -14,6 +14,14 @@ export const CategoriesMenu = styled.div`
   justify-content: center;
   gap: 50px;
   margin-top: 20px;
+
+  @media (max-width: 1070px) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 10px;
+    /* background-color: black; */
+  }
 `
 
 export const ProductsContainer = styled.div`
@@ -24,6 +32,11 @@ export const ProductsContainer = styled.div`
   gap: 20px;
   padding: 40px;
   justify-items: center;
+  @media (max-width: 1050px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 `
 
 export const CategoryButton = styled.button`

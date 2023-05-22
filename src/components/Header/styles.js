@@ -2,12 +2,15 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   height: 72px;
+  width: 100%;
   background: #ffffff;
   box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.15);
   display: flex;
   align-items: center;
   flex-direction: row;
   justify-content: space-around;
+  position: fixed;
+  z-index: 5;
 `
 
 export const ContainerLeft = styled.div`
