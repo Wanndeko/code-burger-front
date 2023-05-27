@@ -11,7 +11,7 @@ export function CartItems() {
     decreaseProducts,
     deleteCartProducts
   } = useCart()
-  console.log(cartProducts)
+
 
   return (
     <Container>
